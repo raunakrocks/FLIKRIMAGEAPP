@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56415B3F22970D5F00BFE489 /* ImageAPIImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 56415B3E22970D5F00BFE489 /* ImageAPIImpl.m */; };
+		56415B4322970DB900BFE489 /* ImageServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 56415B4222970DB900BFE489 /* ImageServiceImpl.m */; };
+		56415B4722970E3900BFE489 /* ImageStorageServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 56415B4622970E3900BFE489 /* ImageStorageServiceImpl.m */; };
+		56415B4E2297132C00BFE489 /* ImageStorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 56415B4D2297132C00BFE489 /* ImageStorageHelper.m */; };
+		56415B54229B15BD00BFE489 /* ImageServiceImplTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56415B53229B15BD00BFE489 /* ImageServiceImplTests.m */; };
 		566C6A6D229313E800BBBDC1 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A6C229313E800BBBDC1 /* UIView+AutoLayout.m */; };
 		566C6A73229325D700BBBDC1 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A72229325D700BBBDC1 /* ImageCell.m */; };
-		566C6A782293455100BBBDC1 /* ImageServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A772293455100BBBDC1 /* ImageServiceImpl.m */; };
 		566C6A7C2293473100BBBDC1 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A7B2293473100BBBDC1 /* ImageModel.m */; };
 		566C6A832293508000BBBDC1 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A822293508000BBBDC1 /* Parser.m */; };
 		566C6A862293566700BBBDC1 /* FlikrHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A852293566700BBBDC1 /* FlikrHomeViewModel.m */; };
-		566C6A89229365BB00BBBDC1 /* ImageFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A88229365BB00BBBDC1 /* ImageFetcherService.m */; };
-		566C6A8E22937F7600BBBDC1 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A8D22937F7600BBBDC1 /* ImageCache.m */; };
-		566C6A922293856000BBBDC1 /* ImageStorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A912293855F00BBBDC1 /* ImageStorageHelper.m */; };
 		566C6A942295CD1E00BBBDC1 /* FlikrHomeViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A932295CD1E00BBBDC1 /* FlikrHomeViewModelTests.m */; };
 		566C6A962295D3ED00BBBDC1 /* ImageModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A952295D3ED00BBBDC1 /* ImageModelTests.m */; };
-		566C6A982295D60D00BBBDC1 /* ImageCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A972295D60D00BBBDC1 /* ImageCacheTests.m */; };
-		566C6A9A2295DB5D00BBBDC1 /* ImageStorageHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 566C6A992295DB5D00BBBDC1 /* ImageStorageHelperTests.m */; };
 		56DFE97A2292F97400A9E307 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DFE9792292F97400A9E307 /* AppDelegate.m */; };
 		56DFE97D2292F97400A9E307 /* FlikrHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DFE97C2292F97400A9E307 /* FlikrHomeViewController.m */; };
 		56DFE9802292F97400A9E307 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56DFE97E2292F97400A9E307 /* Main.storyboard */; };
@@ -48,29 +47,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56415B3D22970D5F00BFE489 /* ImageAPIImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageAPIImpl.h; sourceTree = "<group>"; };
+		56415B3E22970D5F00BFE489 /* ImageAPIImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageAPIImpl.m; sourceTree = "<group>"; };
+		56415B4122970DB900BFE489 /* ImageServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageServiceImpl.h; sourceTree = "<group>"; };
+		56415B4222970DB900BFE489 /* ImageServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageServiceImpl.m; sourceTree = "<group>"; };
+		56415B4522970E3900BFE489 /* ImageStorageServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStorageServiceImpl.h; sourceTree = "<group>"; };
+		56415B4622970E3900BFE489 /* ImageStorageServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageStorageServiceImpl.m; sourceTree = "<group>"; };
+		56415B4A229710C300BFE489 /* ImageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageService.h; sourceTree = "<group>"; };
+		56415B4B2297126900BFE489 /* ImageStorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStorageService.h; sourceTree = "<group>"; };
+		56415B4C2297132C00BFE489 /* ImageStorageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStorageHelper.h; sourceTree = "<group>"; };
+		56415B4D2297132C00BFE489 /* ImageStorageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageStorageHelper.m; sourceTree = "<group>"; };
+		56415B4F229715F500BFE489 /* ImageAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageAPI.h; sourceTree = "<group>"; };
+		56415B53229B15BD00BFE489 /* ImageServiceImplTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageServiceImplTests.m; sourceTree = "<group>"; };
 		566C6A6B229313E800BBBDC1 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
 		566C6A6C229313E800BBBDC1 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		566C6A71229325D700BBBDC1 /* ImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		566C6A72229325D700BBBDC1 /* ImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
-		566C6A762293455100BBBDC1 /* ImageServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageServiceImpl.h; sourceTree = "<group>"; };
-		566C6A772293455100BBBDC1 /* ImageServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageServiceImpl.m; sourceTree = "<group>"; };
 		566C6A7A2293473100BBBDC1 /* ImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
 		566C6A7B2293473100BBBDC1 /* ImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
-		566C6A7E22934D0800BBBDC1 /* ImageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageService.h; sourceTree = "<group>"; };
 		566C6A812293508000BBBDC1 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		566C6A822293508000BBBDC1 /* Parser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		566C6A842293566700BBBDC1 /* FlikrHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlikrHomeViewModel.h; sourceTree = "<group>"; };
 		566C6A852293566700BBBDC1 /* FlikrHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlikrHomeViewModel.m; sourceTree = "<group>"; };
-		566C6A87229365BB00BBBDC1 /* ImageFetcherService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageFetcherService.h; sourceTree = "<group>"; };
-		566C6A88229365BB00BBBDC1 /* ImageFetcherService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageFetcherService.m; sourceTree = "<group>"; };
-		566C6A8C22937F7600BBBDC1 /* ImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
-		566C6A8D22937F7600BBBDC1 /* ImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
-		566C6A902293855F00BBBDC1 /* ImageStorageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageStorageHelper.h; sourceTree = "<group>"; };
-		566C6A912293855F00BBBDC1 /* ImageStorageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageStorageHelper.m; sourceTree = "<group>"; };
 		566C6A932295CD1E00BBBDC1 /* FlikrHomeViewModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlikrHomeViewModelTests.m; sourceTree = "<group>"; };
 		566C6A952295D3ED00BBBDC1 /* ImageModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageModelTests.m; sourceTree = "<group>"; };
-		566C6A972295D60D00BBBDC1 /* ImageCacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheTests.m; sourceTree = "<group>"; };
-		566C6A992295DB5D00BBBDC1 /* ImageStorageHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageStorageHelperTests.m; sourceTree = "<group>"; };
 		56DFE9752292F97400A9E307 /* FlikrImageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlikrImageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56DFE9782292F97400A9E307 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56DFE9792292F97400A9E307 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +114,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56415B3C22970D1E00BFE489 /* ImageAPI */ = {
+			isa = PBXGroup;
+			children = (
+				56415B4F229715F500BFE489 /* ImageAPI.h */,
+				56415B3D22970D5F00BFE489 /* ImageAPIImpl.h */,
+				56415B3E22970D5F00BFE489 /* ImageAPIImpl.m */,
+			);
+			path = ImageAPI;
+			sourceTree = "<group>";
+		};
+		56415B4022970D9B00BFE489 /* ImageService */ = {
+			isa = PBXGroup;
+			children = (
+				56415B4A229710C300BFE489 /* ImageService.h */,
+				56415B4122970DB900BFE489 /* ImageServiceImpl.h */,
+				56415B4222970DB900BFE489 /* ImageServiceImpl.m */,
+				56415B53229B15BD00BFE489 /* ImageServiceImplTests.m */,
+				56415B4422970DEB00BFE489 /* ImageStorageService */,
+				56415B3C22970D1E00BFE489 /* ImageAPI */,
+			);
+			path = ImageService;
+			sourceTree = "<group>";
+		};
+		56415B4422970DEB00BFE489 /* ImageStorageService */ = {
+			isa = PBXGroup;
+			children = (
+				56415B4B2297126900BFE489 /* ImageStorageService.h */,
+				56415B4522970E3900BFE489 /* ImageStorageServiceImpl.h */,
+				56415B4622970E3900BFE489 /* ImageStorageServiceImpl.m */,
+				56415B4C2297132C00BFE489 /* ImageStorageHelper.h */,
+				56415B4D2297132C00BFE489 /* ImageStorageHelper.m */,
+			);
+			path = ImageStorageService;
+			sourceTree = "<group>";
+		};
 		566C6A6E22931C3400BBBDC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +189,8 @@
 		566C6A752293447D00BBBDC1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				566C6A8A229371CE00BBBDC1 /* ImageFetcherService */,
-				566C6A7D22934C6900BBBDC1 /* ImageService */,
-				566C6A7F22934DEE00BBBDC1 /* Parser */,
+				56415B4022970D9B00BFE489 /* ImageService */,
+				566C6A7F22934DEE00BBBDC1 /* Parsers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -171,52 +205,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		566C6A7D22934C6900BBBDC1 /* ImageService */ = {
-			isa = PBXGroup;
-			children = (
-				566C6A7E22934D0800BBBDC1 /* ImageService.h */,
-				566C6A762293455100BBBDC1 /* ImageServiceImpl.h */,
-				566C6A772293455100BBBDC1 /* ImageServiceImpl.m */,
-			);
-			path = ImageService;
-			sourceTree = "<group>";
-		};
-		566C6A7F22934DEE00BBBDC1 /* Parser */ = {
+		566C6A7F22934DEE00BBBDC1 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				566C6A812293508000BBBDC1 /* Parser.h */,
 				566C6A822293508000BBBDC1 /* Parser.m */,
 			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
-		566C6A8A229371CE00BBBDC1 /* ImageFetcherService */ = {
-			isa = PBXGroup;
-			children = (
-				566C6A87229365BB00BBBDC1 /* ImageFetcherService.h */,
-				566C6A88229365BB00BBBDC1 /* ImageFetcherService.m */,
-			);
-			path = ImageFetcherService;
-			sourceTree = "<group>";
-		};
-		566C6A8B22937EB900BBBDC1 /* ImageCache */ = {
-			isa = PBXGroup;
-			children = (
-				566C6A8C22937F7600BBBDC1 /* ImageCache.h */,
-				566C6A8D22937F7600BBBDC1 /* ImageCache.m */,
-				566C6A972295D60D00BBBDC1 /* ImageCacheTests.m */,
-			);
-			path = ImageCache;
-			sourceTree = "<group>";
-		};
-		566C6A8F2293853900BBBDC1 /* ImageStorageHelper */ = {
-			isa = PBXGroup;
-			children = (
-				566C6A902293855F00BBBDC1 /* ImageStorageHelper.h */,
-				566C6A912293855F00BBBDC1 /* ImageStorageHelper.m */,
-				566C6A992295DB5D00BBBDC1 /* ImageStorageHelperTests.m */,
-			);
-			path = ImageStorageHelper;
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		56DFE96C2292F97400A9E307 = {
@@ -242,13 +237,11 @@
 		56DFE9772292F97400A9E307 /* FlikrImageApp */ = {
 			isa = PBXGroup;
 			children = (
-				566C6A8F2293853900BBBDC1 /* ImageStorageHelper */,
 				566C6A792293470E00BBBDC1 /* Models */,
 				566C6A702293258E00BBBDC1 /* Views */,
 				566C6A74229325F000BBBDC1 /* ViewModels */,
 				566C6A6E22931C3400BBBDC1 /* Controllers */,
 				566C6A752293447D00BBBDC1 /* Services */,
-				566C6A8B22937EB900BBBDC1 /* ImageCache */,
 				566C6A6F22931C6900BBBDC1 /* Categories */,
 				56DFE9782292F97400A9E307 /* AppDelegate.h */,
 				56DFE9792292F97400A9E307 /* AppDelegate.m */,
@@ -409,18 +402,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56415B3F22970D5F00BFE489 /* ImageAPIImpl.m in Sources */,
 				566C6A832293508000BBBDC1 /* Parser.m in Sources */,
 				56DFE97D2292F97400A9E307 /* FlikrHomeViewController.m in Sources */,
-				566C6A782293455100BBBDC1 /* ImageServiceImpl.m in Sources */,
+				56415B4322970DB900BFE489 /* ImageServiceImpl.m in Sources */,
+				56415B4722970E3900BFE489 /* ImageStorageServiceImpl.m in Sources */,
 				566C6A7C2293473100BBBDC1 /* ImageModel.m in Sources */,
 				566C6A6D229313E800BBBDC1 /* UIView+AutoLayout.m in Sources */,
-				566C6A8E22937F7600BBBDC1 /* ImageCache.m in Sources */,
 				566C6A862293566700BBBDC1 /* FlikrHomeViewModel.m in Sources */,
 				566C6A73229325D700BBBDC1 /* ImageCell.m in Sources */,
 				56DFE9882292F97900A9E307 /* main.m in Sources */,
 				56DFE97A2292F97400A9E307 /* AppDelegate.m in Sources */,
-				566C6A89229365BB00BBBDC1 /* ImageFetcherService.m in Sources */,
-				566C6A922293856000BBBDC1 /* ImageStorageHelper.m in Sources */,
+				56415B4E2297132C00BFE489 /* ImageStorageHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,11 +421,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566C6A9A2295DB5D00BBBDC1 /* ImageStorageHelperTests.m in Sources */,
 				566C6A942295CD1E00BBBDC1 /* FlikrHomeViewModelTests.m in Sources */,
 				56DFE9922292F97900A9E307 /* FlikrImageAppTests.m in Sources */,
-				566C6A982295D60D00BBBDC1 /* ImageCacheTests.m in Sources */,
 				566C6A962295D3ED00BBBDC1 /* ImageModelTests.m in Sources */,
+				56415B54229B15BD00BFE489 /* ImageServiceImplTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

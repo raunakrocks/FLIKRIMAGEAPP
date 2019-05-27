@@ -7,6 +7,7 @@
 //
 
 #import "FlikrHomeViewModel.h"
+#import "ImageService.h"
 
 @interface FlikrHomeViewModel()
 @property(nonatomic, strong) id<ImageService> service;
@@ -15,6 +16,9 @@
 
 @implementation FlikrHomeViewModel
 
+/**NOTE: Injecting service as a protocol in the init so that
+        this can be mocked for writing testing
+ **/
 - (instancetype)initWithImageService: (id<ImageService>)service {
     self = [super init];
     if(self) {
@@ -24,21 +28,32 @@
     return self;
 }
 
-- (void)searchImagesWithText:(NSString *)text
-                  pageNumber: (NSInteger)pageNumber
-           completionHandler:(void (^)(void))completionHandler {
-    [self.service searchImagesWithText:text
-                            pageNumber: pageNumber
-                     completionHandler:^(NSArray<ImageModel *> *data, NSError *error) {
-                         if(error==NULL) {
-                             if(pageNumber ==1)
-                                 self.imageModels = [data mutableCopy];
-                             else {
-                                 self.imageModels = [[self.imageModels arrayByAddingObjectsFromArray:[data mutableCopy]] mutableCopy];
-                             }
-                         }
-                         completionHandler();
-                     }];
+- (void)searchImageModelsWithText: (NSString *)text
+                       pageNumber: (NSInteger)pageNumber
+                completionHandler:(void (^)(NSError *error))completionHandler {
+    [self.service getImageModelsWithText:text
+                              pageNumber:pageNumber
+                       completionHandler:^(NSArray<ImageModel *> *imageModels, NSError *error) {
+                           if(error == NULL) {
+                               [self updateImageModels:imageModels pageNumber:pageNumber];
+                               completionHandler(NULL);
+                           } else {
+                               completionHandler(error);
+                           }
+    }];
+}
+
+- (void)getImageForImageModel:(ImageModel *)imageModel
+            completionHandler:(void (^)(UIImage *image, NSError *error))completionHandler {
+    [self.service getImageForImageModel:imageModel completionHandler:completionHandler];
+}
+
+- (void)updateImageModels: (NSArray<ImageModel *> *) imageModels pageNumber: (NSInteger)pageNumber {
+    if(pageNumber == 1) {
+        self.imageModels = [imageModels mutableCopy];
+    } else {
+        self.imageModels = [[self.imageModels arrayByAddingObjectsFromArray:[imageModels mutableCopy]] mutableCopy];
+    }
 }
 
 @end

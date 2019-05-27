@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import "ImageAPIImpl.h"
 #import "ImageModel.h"
 #import "ImageService.h"
 
 @interface FlikrHomeViewModel : NSObject
-@property(nonatomic, strong, readonly) NSArray<ImageModel *> *imageModels;
+@property(nonatomic, strong, readonly) NSMutableArray<ImageModel *> *imageModels;
 
 - (instancetype)initWithImageService: (id<ImageService>)service;
-- (void)searchImagesWithText:(NSString *)text
-                  pageNumber: (NSInteger)pageNumber
-             completionHandler:(void (^)(void))completionHandler;
+- (void)searchImageModelsWithText: (NSString *)text
+                       pageNumber: (NSInteger)pageNumber
+                completionHandler:(void (^)(NSError *error))completionHandler;
+- (void)getImageForImageModel:(ImageModel *)imageModel
+            completionHandler:(void (^)(UIImage *image, NSError *error))completionHandler;
 @end
 

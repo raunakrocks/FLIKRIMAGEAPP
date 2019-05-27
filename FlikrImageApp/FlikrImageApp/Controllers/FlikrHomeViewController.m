@@ -7,14 +7,13 @@
 //
 
 #import "FlikrHomeViewController.h"
-#import "ImageCell.h"
-#import "UIView+AutoLayout.h"
 #import "FlikrHomeViewModel.h"
-#import "ImageService.h"
+#import "ImageCell.h"
+#import "ImageAPIImpl.h"
 #import "ImageServiceImpl.h"
-#import "ImageFetcherService.h"
-#import "ImageCache.h"
-#import "ImageStorageHelper.h"
+#import "ImageStorageServiceImpl.h"
+#import "UIView+AutoLayout.h"
+
 
 @interface FlikrHomeViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
 @property(nonatomic, strong) UISearchBar *searchBar;
@@ -23,20 +22,21 @@
 @property(nonatomic, strong) FlikrHomeViewModel *viewModel;
 @property(nonatomic, assign) NSInteger pageNumber;
 @property(nonatomic, strong) NSString *lastSearchedText;
-@property(nonatomic, assign) NSInteger imageNameCounter;
 @end
 
 @implementation FlikrHomeViewController
 
-static NSString * const reuseIdentifier = @"ImageViewCell";
-const NSInteger padding = 6;
+static NSString *const reuseIdentifier = @"ImageViewCell";
+const CGFloat padding = 6.0;
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if(self) {
-        id<ImageService> service = [[ImageServiceImpl alloc] init];
-        self.viewModel = [[FlikrHomeViewModel alloc] initWithImageService:service];
-        self.pageNumber=1;
+        id api = [[ImageAPIImpl alloc] init];
+        id storageService = [[ImageStorageServiceImpl alloc] init];
+        id<ImageService> imageService = [[ImageServiceImpl alloc] initWithImageAPI:api imageStorageService:storageService];
+        self.viewModel = [[FlikrHomeViewModel alloc] initWithImageService:imageService];
+        self.pageNumber = 1;
     }
     return self;
 }
@@ -76,7 +76,7 @@ const NSInteger padding = 6;
     //ActivityIndicator View Contraints:
     [constraints addObject:[self.fullScreenActivityIndicator.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]];
     [constraints addObject:[self.fullScreenActivityIndicator.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor]];
-
+    
     [NSLayoutConstraint activateConstraints:constraints];
 }
 
@@ -116,32 +116,26 @@ const NSInteger padding = 6;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ImageCell *cell = (ImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    ImageModel *model = self.viewModel.imageModels[indexPath.row];
     cell.tag = indexPath.row;
     cell.imageView.image = nil;
     [cell.activityIndicator startAnimating];
+    ImageModel *model = self.viewModel.imageModels[indexPath.row];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *filePath = [[ImageCache shared] getImageFilePathForImageURLString:model.imageURLString];
-        if(filePath == NULL) {
-            UIImage *image = [ImageFetcherService imageForImageURLString:model.imageURLString];
-            NSString *imagePath = [NSString stringWithFormat:@"%ld.png", self.imageNameCounter];
-            [ImageStorageHelper saveImage:image withName:[NSString stringWithFormat:@"%ld.png", self.imageNameCounter]];
-            [[ImageCache shared] setImageFilePathForImageURLString:model.imageURLString imagePath:imagePath];
-        }
-        filePath = [[ImageCache shared] getImageFilePathForImageURLString:model.imageURLString];
-        UIImage *image = [ImageStorageHelper loadImage:filePath];
+        [self.viewModel getImageForImageModel:model completionHandler:^(UIImage *image, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                 if(cell.tag == indexPath.row) {
-                     [cell.activityIndicator stopAnimating];
-                     cell.imageView.image = image;
-                     self.imageNameCounter+=1;
-                 }
-                 });
+                if(cell.tag == indexPath.row) {
+                    [cell.activityIndicator stopAnimating];
+                    cell.imageView.image = image;
+                }
+            });
+        }];
     });
+    
     if(indexPath.row==self.viewModel.imageModels.count-3) {
         //if we are going to render last row. search the next batch of images
         [self searchMoreImages];
     }
+    
     return cell;
 }
 
@@ -168,25 +162,44 @@ const NSInteger padding = 6;
 }
 
 - (void)searchMoreImages {
-    self.pageNumber+=1;
-    [self.viewModel searchImagesWithText:self.lastSearchedText
-                              pageNumber: self.pageNumber
-                       completionHandler:^{
-                           dispatch_async(dispatch_get_main_queue(), ^{
-                               [self.collectionView reloadData];
-                           });
-                       }];
+    self.pageNumber +=1;
+    [self.viewModel searchImageModelsWithText:self.lastSearchedText pageNumber:self.pageNumber completionHandler:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(error == NULL) {
+                [self.collectionView reloadData];
+            } else {
+                [self showErrorAlertWithError: error];
+            }
+        });
+    }];
 }
 
 - (void)startImagesSearchWithText:(NSString *)text {
     [self.fullScreenActivityIndicator startAnimating];
-    [self.viewModel searchImagesWithText:text
-                               pageNumber: self.pageNumber
-                       completionHandler:^{
+    [self.viewModel searchImageModelsWithText:text pageNumber:self.pageNumber completionHandler:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.fullScreenActivityIndicator stopAnimating];
-            [self.collectionView reloadData];
+            if(error == NULL) {
+                [self.collectionView reloadData];
+            } else {
+                [self showErrorAlertWithError: error];
+            }
         });
     }];
 }
+
+
+- (void)showErrorAlertWithError: (NSError *)error {
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:error.domain
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 @end

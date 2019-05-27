@@ -1,5 +1,5 @@
 //
-//  ImageServiceImpl.h
+//  ImageAPIImpl.h
 //  FlikrImageApp
 //
 //  Created by Raunak Talwar on 23/05/19.
@@ -7,15 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "ImageAPI.h"
 
-#import "ImageService.h"
-
-@interface ImageServiceImpl : NSObject<ImageService>
-- (instancetype)initWithImageAPI:(id<ImageAPI> )imageAPI imageStorageService:(id<ImageStorageService> )storageService;
+@interface ImageAPIImpl : NSObject
 - (void)getImageModelsWithText:(NSString *)text
                     pageNumber: (NSInteger)pageNumber
-             completionHandler:(void (^)(NSArray<ImageModel *> *imageModels, NSError *error))completionHandler;
+             completionHandler:(void (^)(NSArray<ImageModel *> *data, NSError *error))completionHandler;
+
 - (void)getImageForImageModel:(ImageModel *)imageModel
             completionHandler:(void (^)(UIImage *image, NSError *error))completionHandler;
 @end
