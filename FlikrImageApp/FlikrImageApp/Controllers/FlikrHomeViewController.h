@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlikrHomeViewModel.h"
 
 @interface FlikrHomeViewController : UIViewController
-
+-(instancetype)initWithViewModel: (FlikrHomeViewModel *)viewModel andPageNumber: (NSInteger) pageNumber;
 @end
 

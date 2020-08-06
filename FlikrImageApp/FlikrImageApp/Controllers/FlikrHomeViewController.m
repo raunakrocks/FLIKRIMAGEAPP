@@ -9,7 +9,6 @@
 #import "FlikrHomeViewController.h"
 #import "FlikrHomeViewModel.h"
 #import "ImageCell.h"
-#import "ImageAPIImpl.h"
 #import "ImageServiceImpl.h"
 #import "ImageStorageServiceImpl.h"
 #import "UIView+AutoLayout.h"
@@ -29,16 +28,13 @@
 static NSString *const reuseIdentifier = @"ImageViewCell";
 const CGFloat padding = 6.0;
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if(self) {
-        id api = [[ImageAPIImpl alloc] init];
-        id storageService = [[ImageStorageServiceImpl alloc] init];
-        id<ImageService> imageService = [[ImageServiceImpl alloc] initWithImageAPI:api imageStorageService:storageService];
-        self.viewModel = [[FlikrHomeViewModel alloc] initWithImageService:imageService];
-        self.pageNumber = 1;
-    }
-    return self;
+-(instancetype)initWithViewModel: (FlikrHomeViewModel *)viewModel andPageNumber: (NSInteger) pageNumber {
+  self = [super init];
+  if(self) {
+    self.viewModel = viewModel;
+    self.pageNumber = pageNumber;
+  }
+  return self;
 }
 
 - (void)viewDidLoad {
@@ -56,6 +52,7 @@ const CGFloat padding = 6.0;
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.fullScreenActivityIndicator];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setupConstraints {

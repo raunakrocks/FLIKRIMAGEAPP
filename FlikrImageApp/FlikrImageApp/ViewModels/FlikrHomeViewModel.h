@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ImageAPIImpl.h"
 #import "ImageModel.h"
 #import "ImageService.h"
 

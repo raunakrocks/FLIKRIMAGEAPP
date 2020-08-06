@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "ImageAPIImpl.h"
+#import "ImageServiceImpl.h"
+#import "ImageStorageServiceImpl.h"
+#import "FlikrHomeViewModel.h"
+#import "FlikrHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    id api = [[ImageAPIImpl alloc] init];
+    id storageService = [[ImageStorageServiceImpl alloc] init];
+    id<ImageService> imageService = [[ImageServiceImpl alloc] initWithImageAPI:api imageStorageService:storageService];
+    FlikrHomeViewModel *viewModel = [[FlikrHomeViewModel alloc] initWithImageService:imageService];
+    FlikrHomeViewController *viewController = [[FlikrHomeViewController alloc] initWithViewModel:viewModel
+                                                                                   andPageNumber:1];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
